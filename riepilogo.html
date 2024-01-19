@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>Riepilogo</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js"></script>
+    <script src="/script.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <a href="/index.html" id="reset"><img src="/img/carnevale24_logo.svg" class="logo-2" alt=""></a>
+    </header>
+
+    <h1 class="riepilogo-text" style="text-align: center; color: white; margin-top: 40px;">RIEPILOGO PREMI</h1>
+
+    <div class="container">
+
+        <div class="card first">
+            <img src="/img/first_medal.svg" class="medal" alt="first_medal">
+            <div class="card-content">
+                <h1 id="numero3" data-premio="3"></h1>
+            </div>
+            <div class="card-footer">
+                <p>1° Premio</p>
+                <span class="card-description" style="text-align: center;">Smartbox - Paesaggi italiani, fuga di 3 giorni con colazione</span>
+            </div>
+        </div>
+  
+        <div class="card second">
+            <img src="/img/second_medal.svg" class="medal" alt="first_medal">
+            <div class="card-content">
+                <h1 id="numero2" data-premio="2"></h1>
+            </div> 
+            <div class="card-footer">
+                <p>2° Premio</p>
+                <span class="card-description" style="text-align: center;">Cesto di prodotti tipici di aziende dei 4 Comuni</span>
+            </div>
+        </div>
+        <div class="card third">
+            <img src="/img/third_medal.svg" class="medal" alt="first_medal">
+            <div class="card-content">
+                
+                <h1 id="numero1" data-premio="1"></h1>
+            </div> 
+            <div class="card-footer">
+                <p>3° Premio</p>
+                <span class="card-description" style="text-align: center;">Buono sconto per una cena presso un ristorante dei 4 Comuni</span>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p class="credit-text">Carnevale Intercomunale 2024 <br> Alfano - Laurito - Montano - Rofrano</p>
+    </footer>
+
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
