@@ -14,7 +14,7 @@ body {
     margin: 0 auto;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
-    background-image: url(/img/bg.svg);
+    background-image: url(./img/bg.svg);
     background-repeat: no-repeat;
     background-position: center left;
     background-size: cover;
