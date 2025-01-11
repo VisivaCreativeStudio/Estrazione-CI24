@@ -317,3 +317,42 @@ body {
         opacity: 1;
     }
 }
+
+
+.numero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 240px;
+  height: 60px;
+  background-color: white;
+  border: 3px solid var(--Yellow);
+  color: var(--Purple);
+  font-size: 36px;
+  font-weight: 700;
+  border-radius: 0.5em;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+}
+
+.numero-animato {
+  animation: slotSpin 1s ease-in-out;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+}
+
+@keyframes slotSpin {
+  0% {
+      transform: translateY(100%);
+      opacity: 0;
+  }
+  50% {
+      transform: translateY(-10%);
+      opacity: 1;
+  }
+  100% {
+      transform: translateY(0%);
+  }
+}
