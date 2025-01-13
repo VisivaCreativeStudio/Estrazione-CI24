@@ -11,15 +11,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js"></script>
 </head>
 <body>
+
+    
     <div class="estrazione-page">
         <header>
-            <a href="index.html" id="reset"><img src="./img/carnevale24_logo.svg" class="logo-2" alt=""></a>
+            <a href="index.html" id="reset"><img src="./img/logo_carnevale2025.svg" class="logo-2" alt=""></a>
         </header>
 
-        <div class="content">
+        <div class="content third">
             <div class="premio-block">
+                <img src="./img/third_medal.svg" class="medal" alt="first_medal">
                 <h2 class="premio" id="premioTitle">3° Premio</h2>
-                <p>Buono sconto per una cena presso un ristorante dei 4 Comuni</p>
+                <p>Lorem ipsum dolor sit amet</p>
                 <div class="numero-container" id="numeroContainer1" onclick="estraiNumero(event)">
                     <div class="numero" id="numero1"></div>
                 </div>
@@ -30,21 +33,20 @@
                         <button id="estraiButton" onclick="estraiNumero(event)" data-premio="1">Estrai <ion-icon name="chevron-forward-outline"></ion-icon></button>
                     </div>
                     <!-- Estrazione1.html -->
-                    <a href="estrazione2.html" class="secondary-button" data-premio="1">Prossima estrazione</a>
+                    <a href="estrazione2.html" id="prossima-estrazione1" class="secondary-button" data-premio="1">Prossima estrazione</a>
                 </div>
             </div>
         </div>
+        
     </div>
 
     <footer>
-        <p class="credit-text">Carnevale Intercomunale 2024 <br> Alfano - Laurito - Montano - Rofrano</p>
+        <p class="credit-text">Carnevale Intercomunale 2025</p>
     </footer>
 
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>    
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
-
-    
 </body>
 </html>

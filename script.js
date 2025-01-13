@@ -1,32 +1,47 @@
-var estrazioneEffettuata = false;
+let estrazioneEffettuata = [false, false, false]; // Un array per tenere traccia dell'estrazione per ciascun premio
+
+// Array globale per numeri unici
+let numeriDisponibili = Array.from({ length: 3001 }, (_, i) => i.toString().padStart(4, '0'));
+
+// Mescola i numeri usando Fisher-Yates Shuffle
+for (let i = numeriDisponibili.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [numeriDisponibili[i], numeriDisponibili[j]] = [numeriDisponibili[j], numeriDisponibili[i]];
+}
+
+function generaNumero() {
+    if (numeriDisponibili.length === 0) {
+        alert("Tutti i numeri sono stati estratti!");
+        return null; 
+    }
+    return numeriDisponibili.pop(); 
+}
 
 function estraiNumero(event) {
     var dataPremio = event.currentTarget.getAttribute('data-premio');
+    var premioIndex = dataPremio - 1; 
 
-    // Aggiungi un log per verificare l'esecuzione della funzione
     console.log('Estrazione in corso per il premio: ', dataPremio);
 
-    if (!estrazioneEffettuata) {
+    if (!estrazioneEffettuata[premioIndex]) {
         var nuovoNumero = generaNumero();
+
+        if (nuovoNumero === null) return; 
+
         console.log('Numero estratto: ', nuovoNumero);
 
-        // Mostra il numero in stile slot machine
         animaNumeroSlot(dataPremio, nuovoNumero);
 
-        // Aggiungi animazione dei coriandoli con un ritardo di 500 ms
+
         setTimeout(avviaConfetti, 500);
 
         // Salva il numero estratto in un cookie
         Cookies.set("numero_estratto" + dataPremio, nuovoNumero);
 
-        estrazioneEffettuata = true;
+        estrazioneEffettuata[premioIndex] = true;
     } else {
-        alert("Hai già estratto un numero per questa pagina!");
+        alert("Hai già estratto un numero per questo premio!");
     }
-}
-
-function generaNumero() {
-    return Math.floor(Math.random() * 2000).toString().padStart(4, '0');
 }
 
 function animaNumeroSlot(dataPremio, numeroFinale) {
@@ -36,25 +51,25 @@ function animaNumeroSlot(dataPremio, numeroFinale) {
 
     console.log('Avvio animazione slot per il numero: ', numeroFinale);
 
-    // Avvia l'animazione del numero in stile slot machine
+
     slotInterval = setInterval(() => {
         if (step < numeroFinale.length) {
             // Aggiorna il contenitore con una cifra alla volta
             numeroContainer.innerText = numeroFinale.slice(0, step + 1) + getRandomDigits(numeroFinale.length - step - 1);
             step++;
         } else {
-            // Quando l'animazione è completa, mostra il numero finale e ferma l'intervallo
+
             numeroContainer.innerText = numeroFinale;
             clearInterval(slotInterval);
             console.log('Animazione completata per il numero: ', numeroFinale);
         }
-    }, 100); // Cambia cifra ogni 100 ms
+    }, 300); // Cambia cifra ogni 300 ms
 }
 
 function getRandomDigits(length) {
     let randomDigits = '';
     for (let i = 0; i < length; i++) {
-        randomDigits += Math.floor(Math.random() * 10); // Cifra casuale (0-9)
+        randomDigits += Math.floor(Math.random() * 10);
     }
     return randomDigits;
 }
@@ -64,7 +79,7 @@ function avviaConfetti() {
     confetti({
         particleCount: 100,
         spread: 70,
-        origin: { x: 0.5, y: 0.5 } // Centro dello schermo
+        origin: { x: 0.5, y: 0.5 }
     });
 }
 
@@ -78,14 +93,43 @@ function mostraNumeri() {
     }
 }
 
+function vaiAllaProssimaEstrarzione(premio) {
+    // Nascondi il blocco attuale
+    var currentEstrazione = document.getElementById("estrazione" + (premio - 1));
+    currentEstrazione.style.display = 'none';
+
+    // Mostra il blocco successivo
+    var nextEstrazione = document.getElementById("estrazione" + premio);
+    nextEstrazione.style.display = 'block';
+
+    // Aggiungi animazione di transizione
+    nextEstrazione.classList.add('show');
+    
+    // Durata animazione
+    setTimeout(function() {
+        nextEstrazione.classList.remove('show');
+    }, 500); // durata dell'animazione
+}
+
 function resetNumeri() {
     for (var i = 1; i <= 3; i++) {
         Cookies.remove("numero_estratto" + i);
         var numeroContainer = document.getElementById("numero" + i);
         numeroContainer.innerText = '';
     }
-    estrazioneEffettuata = false;
+    estrazioneEffettuata = [false, false, false];
+
+    // Reimposta l'array numeriDisponibili
+    numeriDisponibili = Array.from({ length: 3001 }, (_, i) => i.toString().padStart(4, '0'));
+
+    // Mescola di nuovo i numeri
+    for (let i = numeriDisponibili.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [numeriDisponibili[i], numeriDisponibili[j]] = [numeriDisponibili[j], numeriDisponibili[i]];
+    }
+    console.log("Numeri resettati!");
 }
 
 document.addEventListener("DOMContentLoaded", mostraNumeri);
 document.getElementById("reset").addEventListener("click", resetNumeri);
+

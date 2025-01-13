@@ -1,7 +1,7 @@
 :root {
-    --Yellow: #ffc43d;
-    --Purple: #9e0059;
-    --SkyBlue: #3498db;
+    --Yellow: #f6c20a;
+    --Purple: #de197e;
+    --SkyBlue: #15acdf;
 }
 
 * {
@@ -10,14 +10,17 @@
     box-sizing: border-box;
 }
 
+
 body {
     margin: 0 auto;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
-    background-image: url(./img/bg.svg);
+    /*background-image: url(./img/bg.svg);*/
+    /*background-image: linear-gradient(to right bottom, #e1316c, #e64487, #e856a1, #e769ba, #e47bd1, #d578d4, #c576d6, #b474d7, #945fc8, #734bb9, #4d39aa, #10299b);*/
     background-repeat: no-repeat;
-    background-position: center left;
-    background-size: cover;
+    background-size: 100% 100%;
+background-position: 0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px;
+background-image: radial-gradient(18% 28% at 95% 3%, #49D25CFF 13%, #073AFF00 100%),radial-gradient(18% 28% at 81% -2%, #49D25CFF 13%, #073AFF00 100%),radial-gradient(70% 53% at 67% 77%, #FFD00CFF 0%, #073AFF00 100%),radial-gradient(35% 56% at 10% 30%, #F134C1F5 29%, #073AFF00 100%),radial-gradient(74% 86% at -16% -24%, #6D9DFFF5 24%, #073AFF00 100%),linear-gradient(125deg, #4EB5FFFF 1%, #D822A4FF 100%);
     height: 100%;
 }
 
@@ -57,7 +60,7 @@ body {
     gap: 10px;
     margin-top: 3em;
     padding: 15px 30px;
-    background-color: var(--Yellow);
+    background-color: var(--Purple);
     border-radius: 50px;
     color: white;
     text-decoration: none;
@@ -79,16 +82,17 @@ body {
 }
 
 .content {
-    padding: 40px;
-    margin: 6em 20%;
+    position: relative;
+    padding: 15px;
+    margin: 6em 25%;
     border-radius: 24px;
-    border: 2px solid white;
-    background-color: var(--Purple);
+    background-color: white;
 }
+
 
 @media screen and (max-width: 776px) {
     .content{
-        margin: 2em 1em 4em 1em;
+        margin: 5em 1em;
     }
     
     .logo-2{width: 30%; margin-top: 1.5em;}
@@ -103,38 +107,31 @@ body {
     }
 }
 
-.premio-block {
+/*.premio-block {
     margin-top: 50px;
-}
+}*/
 
-.premio-block p{color: white; margin-top: 1em;}
+.premio-block p{color: #0030a3; margin-top: 1em;}
 
 .premio{
+  margin-top: 1em;
     font-size: 42px;
-    color: white;
+    color: #0030a3;
     text-transform: uppercase;
 }
 
 .numero-container {
     display: flex;
     justify-content: center;
-    margin-top: 60px;
+    margin-top: 1.5em;
 }
 
-.numero {
-    width: 240px;
-    height: 60px;
-    background-color: white;
-    border: 3px solid var(--Yellow);
-    color: var(--Purple);
-    font-size: 36px;
-    font-weight: 700;
+.buttons-container{
+  margin-top: 1em;
     display: flex;
-    align-items: center;
     justify-content: center;
-    border-radius: .5em;
-}
-
+    align-items: center;
+  gap: 5px;}
 
 .estrai-btn{
     display: flex;
@@ -147,12 +144,10 @@ body {
     justify-content: center;
     align-items: center;
     gap: .2em;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    padding: 15px 30px;
-    background-color: var(--Yellow);
+    padding: 8px 16px;
+    background-color: var(--Purple);
     color: white;
-    font-size: 24px;
+    font-size: 21px;
     border: none;
     border-radius: 50px;
     cursor: pointer;
@@ -160,12 +155,15 @@ body {
     font-weight: 700;
 }
 
-#estraiButton:hover {
-    background-color: var(--SkyBlue);
-}
 
 .secondary-button {
-    color: white;
+  font-size: 14px;
+  border-radius: 50px;
+  border:2px solid #0030a3;
+    color: #0030a3;
+    padding: 9px;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 
@@ -209,11 +207,9 @@ body {
     width: 4.5em;
   }
 
-  .card>h1{
-    font-size: 1em;
-      font-weight: 500;
-      text-transform: uppercase;
-  }
+#numero1, #numero2, #numero3{
+  font-size: 3em;
+}
 
   .card p{
     font-size: 1.5em;
@@ -326,7 +322,7 @@ body {
   width: 240px;
   height: 60px;
   background-color: white;
-  border: 3px solid var(--Yellow);
+  border: 3px solid var(--Purple);
   color: var(--Purple);
   font-size: 36px;
   font-weight: 700;
@@ -356,3 +352,29 @@ body {
       transform: translateY(0%);
   }
 }
+
+
+.premio-block {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+/* Stile per il contenitore dei confetti */
+#tsparticles {
+  position: fixed; /* Copre l'intero schermo */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; /* Posizionato sotto il contenuto principale */
+  pointer-events: none; /* Non interferisce con i clic */
+}
+
+
