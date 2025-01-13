@@ -211,6 +211,10 @@ background-image: radial-gradient(18% 28% at 95% 3%, #49D25CFF 13%, #073AFF00 10
   font-size: 3em;
 }
 
+.card-content h1{
+  color: var(--Purple) !important;
+}
+
   .card p{
     font-size: 1.5em;
       font-weight: 700;
