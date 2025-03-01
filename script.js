@@ -3,7 +3,7 @@ let estrazioneEffettuata = [false, false, false]; // Un array per tenere traccia
 
 
 // Array di numeri da escludere (puoi modificarlo a piacere)
-let numeriEsclusi = ["0005", "0123", "2500"]; // Esempio: escludi questi numeri
+// let numeriEsclusi = ["0005", "0123", "2500"];
 
 // Genera array di numeri disponibili escludendo quelli specificati
 let numeriDisponibili = Array.from({ length: 3001 }, (_, i) => i.toString().padStart(4, '0'))
