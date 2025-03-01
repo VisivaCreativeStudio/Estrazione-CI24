@@ -1,7 +1,13 @@
 let estrazioneEffettuata = [false, false, false]; // Un array per tenere traccia dell'estrazione per ciascun premio
 
-// Array globale per numeri unici
-let numeriDisponibili = Array.from({ length: 3001 }, (_, i) => i.toString().padStart(4, '0'));
+
+
+// Array di numeri da escludere (puoi modificarlo a piacere)
+let numeriEsclusi = ["0005", "0123", "2500"]; // Esempio: escludi questi numeri
+
+// Genera array di numeri disponibili escludendo quelli specificati
+let numeriDisponibili = Array.from({ length: 3001 }, (_, i) => i.toString().padStart(4, '0'))
+    .filter(num => !numeriEsclusi.includes(num)); // Rimuove i numeri esclusi
 
 // Mescola i numeri usando Fisher-Yates Shuffle
 for (let i = numeriDisponibili.length - 1; i > 0; i--) {
