@@ -1,13 +1,4 @@
-let estrazioneEffettuata = [false, false, false]; // Un array per tenere traccia dell'estrazione per ciascun premio
-
-
-
-// Array di numeri da escludere (puoi modificarlo a piacere)
-// let numeriEsclusi = ["0005", "0123", "2500"];
-
-// Genera array di numeri disponibili escludendo quelli specificati
-let numeriDisponibili = Array.from({ length: 3001 }, (_, i) => i.toString().padStart(4, '0'))
-    .filter(num => !numeriEsclusi.includes(num)); // Rimuove i numeri esclusi
+let numeriDisponibili = Array.from({ length: 3001 }, (_, i) => i.toString().padStart(4, '0'));
 
 // Mescola i numeri usando Fisher-Yates Shuffle
 for (let i = numeriDisponibili.length - 1; i > 0; i--) {
@@ -25,29 +16,17 @@ function generaNumero() {
 
 function estraiNumero(event) {
     var dataPremio = event.currentTarget.getAttribute('data-premio');
-    var premioIndex = dataPremio - 1; 
+    var nuovoNumero = generaNumero();
 
-    console.log('Estrazione in corso per il premio: ', dataPremio);
+    if (nuovoNumero === null) return; 
 
-    if (!estrazioneEffettuata[premioIndex]) {
-        var nuovoNumero = generaNumero();
+    console.log('Numero estratto: ', nuovoNumero);
 
-        if (nuovoNumero === null) return; 
+    animaNumeroSlot(dataPremio, nuovoNumero);
+    setTimeout(avviaConfetti, 500);
 
-        console.log('Numero estratto: ', nuovoNumero);
-
-        animaNumeroSlot(dataPremio, nuovoNumero);
-
-
-        setTimeout(avviaConfetti, 500);
-
-        // Salva il numero estratto in un cookie
-        Cookies.set("numero_estratto" + dataPremio, nuovoNumero);
-
-        estrazioneEffettuata[premioIndex] = true;
-    } else {
-        alert("Hai già estratto un numero per questo premio!");
-    }
+    // Salva il numero estratto in un cookie (sovrascrive sempre il precedente)
+    Cookies.set("numero_estratto" + dataPremio, nuovoNumero);
 }
 
 function animaNumeroSlot(dataPremio, numeroFinale) {
@@ -57,19 +36,16 @@ function animaNumeroSlot(dataPremio, numeroFinale) {
 
     console.log('Avvio animazione slot per il numero: ', numeroFinale);
 
-
     slotInterval = setInterval(() => {
         if (step < numeroFinale.length) {
-            // Aggiorna il contenitore con una cifra alla volta
             numeroContainer.innerText = numeroFinale.slice(0, step + 1) + getRandomDigits(numeroFinale.length - step - 1);
             step++;
         } else {
-
             numeroContainer.innerText = numeroFinale;
             clearInterval(slotInterval);
             console.log('Animazione completata per il numero: ', numeroFinale);
         }
-    }, 300); // Cambia cifra ogni 300 ms
+    }, 300); 
 }
 
 function getRandomDigits(length) {
@@ -100,21 +76,17 @@ function mostraNumeri() {
 }
 
 function vaiAllaProssimaEstrarzione(premio) {
-    // Nascondi il blocco attuale
     var currentEstrazione = document.getElementById("estrazione" + (premio - 1));
     currentEstrazione.style.display = 'none';
 
-    // Mostra il blocco successivo
     var nextEstrazione = document.getElementById("estrazione" + premio);
     nextEstrazione.style.display = 'block';
 
-    // Aggiungi animazione di transizione
     nextEstrazione.classList.add('show');
     
-    // Durata animazione
     setTimeout(function() {
         nextEstrazione.classList.remove('show');
-    }, 500); // durata dell'animazione
+    }, 500);
 }
 
 function resetNumeri() {
@@ -123,12 +95,9 @@ function resetNumeri() {
         var numeroContainer = document.getElementById("numero" + i);
         numeroContainer.innerText = '';
     }
-    estrazioneEffettuata = [false, false, false];
 
-    // Reimposta l'array numeriDisponibili
     numeriDisponibili = Array.from({ length: 3001 }, (_, i) => i.toString().padStart(4, '0'));
 
-    // Mescola di nuovo i numeri
     for (let i = numeriDisponibili.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [numeriDisponibili[i], numeriDisponibili[j]] = [numeriDisponibili[j], numeriDisponibili[i]];
@@ -138,4 +107,3 @@ function resetNumeri() {
 
 document.addEventListener("DOMContentLoaded", mostraNumeri);
 document.getElementById("reset").addEventListener("click", resetNumeri);
-
