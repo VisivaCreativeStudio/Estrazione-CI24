@@ -1,7 +1,14 @@
+/* ===========================
+   CSS VARIABLES & RESET
+=========================== */
 :root {
-    --Yellow: #f6c20a;
-    --Purple: #de197e;
-    --SkyBlue: #15acdf;
+    --yellow: #f6c20a;
+    --purple: #de197e;
+    --purple-dark: #b8106a;
+    --sky-blue: #15acdf;
+    --sky-blue-dark: #0e8ab5;
+    --white: #ffffff;
+    --footer-height: 52px;
 }
 
 * {
@@ -10,111 +17,176 @@
     box-sizing: border-box;
 }
 
+/* ===========================
+   BODY & BACKGROUND
+=========================== */
+
 
 body {
-    margin: 0 auto;
-    padding: 0;
     font-family: 'Montserrat', sans-serif;
-    /*background-image: url(./img/bg.svg);*/
-    /*background-image: linear-gradient(to right bottom, #e1316c, #e64487, #e856a1, #e769ba, #e47bd1, #d578d4, #c576d6, #b474d7, #945fc8, #734bb9, #4d39aa, #10299b);*/
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-background-position: 0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px;
-background-image: radial-gradient(18% 28% at 95% 3%, #49D25CFF 13%, #073AFF00 100%),radial-gradient(18% 28% at 81% -2%, #49D25CFF 13%, #073AFF00 100%),radial-gradient(70% 53% at 67% 77%, #FFD00CFF 0%, #073AFF00 100%),radial-gradient(35% 56% at 10% 30%, #F134C1F5 29%, #073AFF00 100%),radial-gradient(74% 86% at -16% -24%, #6D9DFFF5 24%, #073AFF00 100%),linear-gradient(125deg, #4EB5FFFF 1%, #D822A4FF 100%);
-    height: 100%;
+    background-position: 0px 0px;
+    background-image:
+        radial-gradient(18% 28% at 95% 3%, #49D25CCC 13%, transparent 100%),
+        radial-gradient(18% 28% at 81% -2%, #49D25CCC 13%, transparent 100%),
+        radial-gradient(70% 53% at 67% 77%, #FFD00CDD 0%, transparent 100%),
+        radial-gradient(35% 56% at 10% 30%, #F134C1EE 29%, transparent 100%),
+        radial-gradient(74% 86% at -16% -24%, #6D9DFFF5 24%, transparent 100%),
+        linear-gradient(125deg, #4EB5FFFF 1%, #D822A4FF 100%);
+    min-height: 100vh;
+    padding-bottom: var(--footer-height);
 }
 
-@media screen and (min-width: 776px) {
-  body{
-    height: 100vh;}
-}
-
-.homepage, .estrazione-page {
+/* ===========================
+   HOMEPAGE LAYOUT
+=========================== */
+.homepage {
+    min-height: calc(100vh - var(--footer-height));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+    padding: 2rem 1.5rem;
 }
 
+/* === Logo === */
 .logo-index {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30%;
+    width: 42%;
+    max-width: 420px;
+    min-width: 200px;
     height: auto;
-    margin: 0 auto;
-    filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.623));
+    filter: drop-shadow(0 4px 24px rgba(0, 0, 0, 0.45));
 }
 
-.logo-2 {
-    width: 200px;
-    margin: 2em auto;
-    display: flex;
+/* === Ticket counter badge === */
+.ticket-counter {
+    margin-top: 2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 100px;
+    padding: 0.5rem 1.4rem;
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.ticket-counter .dot {
+    width: 8px;
+    height: 8px;
+    background: var(--yellow);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--yellow);
+    flex-shrink: 0;
+}
+
+/* === CTA Button === */
+.cta {
+    margin-top: 2.5rem;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
-    filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.623));
-}
-
-.cta {
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 10px;
-    margin-top: 3em;
-    padding: 15px 30px;
-    background-color: var(--Purple);
-    border-radius: 50px;
+    gap: 0.6rem;
+    padding: 18px 42px;
+    background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 100%);
+    border-radius: 100px;
     color: white;
     text-decoration: none;
-    font-size: 21px;
-    font-weight: 700;
-    max-width: 350px;
+    font-size: 1.15rem;
+    font-weight: 800;
     text-transform: uppercase;
-    transition: background-color 0.3s ease; 
-    margin-bottom: 5em;/* Aggiunta transizione */
+    letter-spacing: 0.06em;
+    box-shadow: 0 6px 28px rgba(222, 25, 126, 0.55);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .cta:hover {
-    background-color: var(--SkyBlue);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 32px rgba(21, 172, 223, 0.6);
+    background: linear-gradient(135deg, var(--sky-blue) 0%, var(--sky-blue-dark) 100%);
 }
 
+.cta:active {
+    transform: translateY(0);
+}
+
+.cta ion-icon {
+    font-size: 1.4rem;
+}
+
+/* Legacy */
 .button {
     text-decoration: none;
     color: white;
 }
 
+/* ===========================
+   FOOTER — fisso in basso
+=========================== */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: var(--footer-height);
+    z-index: 999;
+    background-color: var(--purple);
+}
+
+.credit-text {
+    color: white;
+    text-align: center;
+    padding: 0;
+    line-height: var(--footer-height);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+}
+
+/* ===========================
+   ESTRAZIONE PAGES
+=========================== */
+.estrazione-page {
+    text-align: center;
+}
+
+.logo-2 {
+    width: 180px;
+    margin: 1.8em auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.623));
+}
+
+/* ===========================
+   CONTENT CARD (estrazione)
+=========================== */
 .content {
     position: relative;
     padding: 15px;
-    margin: 6em 25%;
+    margin: 4em 25%;
     border-radius: 24px;
     background-color: white;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
-
-@media screen and (max-width: 776px) {
-    .content{
-        margin: 5em 1em;
-    }
-    
-    .logo-2{width: 30%; margin-top: 1.5em;}
-
-    .logo-index{
-        margin-top: 2em;
-        width: 80%;
-    }
-
-    .cta{
-        margin-top: 4em;
-    }
+/* ===========================
+   PREMIO & NUMBER DISPLAY
+=========================== */
+.premio-block p {
+    color: #0030a3;
+    margin-top: 1em;
 }
 
-/*.premio-block {
-    margin-top: 50px;
-}*/
-
-.premio-block p{color: #0030a3; margin-top: 1em;}
-
-.premio{
-  margin-top: 1em;
+.premio {
+    margin-top: 1em;
     font-size: 42px;
     color: #0030a3;
     text-transform: uppercase;
@@ -126,14 +198,36 @@ background-image: radial-gradient(18% 28% at 95% 3%, #49D25CFF 13%, #073AFF00 10
     margin-top: 1.5em;
 }
 
-.buttons-container{
-  margin-top: 1em;
+.numero {
     display: flex;
     justify-content: center;
     align-items: center;
-  gap: 5px;}
+    width: 240px;
+    height: 60px;
+    background-color: white;
+    border: 3px solid var(--purple);
+    color: var(--purple);
+    font-size: 36px;
+    font-weight: 700;
+    border-radius: 0.5em;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+}
 
-.estrai-btn{
+/* ===========================
+   BUTTONS (estrazione)
+=========================== */
+.buttons-container {
+    margin-top: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.estrai-btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -144,243 +238,329 @@ background-image: radial-gradient(18% 28% at 95% 3%, #49D25CFF 13%, #073AFF00 10
     justify-content: center;
     align-items: center;
     gap: .2em;
-    padding: 8px 16px;
-    background-color: var(--Purple);
+    padding: 10px 24px;
+    background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 100%);
     color: white;
-    font-size: 21px;
+    font-size: 20px;
     border: none;
     border-radius: 50px;
     cursor: pointer;
     text-transform: uppercase;
     font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    box-shadow: 0 4px 16px rgba(222, 25, 126, 0.4);
+    transition: transform 0.15s ease;
 }
 
+#estraiButton:hover {
+    transform: translateY(-2px);
+}
+
+#estraiButton:active {
+    transform: translateY(0);
+}
+
+#estraiButton:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Bottone conferma vincitore */
+#confermaButton {
+    display: none;
+    padding: 10px 20px;
+    background: #16a34a;
+    color: white;
+    font-size: 15px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    transition: transform 0.15s ease;
+}
+
+#confermaButton:hover {
+    transform: translateY(-2px);
+}
+
+/* Bottone ri-estrai */
+#riestraiButton {
+    display: none;
+    padding: 10px 20px;
+    background: #dc2626;
+    color: white;
+    font-size: 15px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    transition: transform 0.15s ease;
+}
+
+#riestraiButton:hover {
+    transform: translateY(-2px);
+}
 
 .secondary-button {
-  font-size: 14px;
-  border-radius: 50px;
-  border:2px solid #0030a3;
+    font-size: 14px;
+    border-radius: 50px;
+    border: 2px solid #0030a3;
     color: #0030a3;
-    padding: 9px;
+    padding: 9px 16px;
     text-decoration: none;
     cursor: pointer;
+    display: inline-block;
+    transition: background 0.15s ease, color 0.15s ease;
 }
 
-
-.riepilogo-text{
-    font-size: 6em;
+.secondary-button:hover {
+    background: #0030a3;
+    color: white;
 }
 
-@media screen and (max-width: 776px) {
-    .riepilogo-text{font-size: 2em;}
+/* Link prossima estrazione (nascosto finché non si conferma) */
+#prossimaLink {
+    display: none;
 }
 
-  
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: end;
-    gap: 2em;
-    margin: 6em;
-  }
-  
-  .card {
-    position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: end;
-      align-items: center;
-      gap: 1em;
-      height: 300px;
-    background: rgb(255, 255, 255);
-    border-radius: 15px;
-    width: 400px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-  }
-
-  .medal{
+/* ===========================
+   MEDAL
+=========================== */
+.medal {
     position: absolute;
     top: -50px;
     left: 50%;
     transform: translateX(-50%);
     width: 4.5em;
-  }
-
-#numero1, #numero2, #numero3{
-  font-size: 3em;
 }
 
-.card-content h1{
-  color: var(--Purple) !important;
+/* ===========================
+   RIEPILOGO PAGE
+=========================== */
+.riepilogo-text {
+    font-size: 6em;
 }
 
-  .card p{
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 2em;
+    margin: 6em;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1em;
+    height: 300px;
+    background: #ffffff;
+    border-radius: 15px;
+    width: 400px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+    box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.4);
+}
+
+#numero1,
+#numero2,
+#numero3 {
+    font-size: 3em;
+}
+
+.card-content h1 {
+    color: var(--purple) !important;
+}
+
+.card p {
     font-size: 1.5em;
-      font-weight: 700;
-      text-transform: uppercase;
-  }
+    font-weight: 700;
+    text-transform: uppercase;
+}
 
-
-  .first {
-    border-radius: 18px;
+.first {
     border: 3px solid gold;
-  }
+}
 
-  .second {
-    border-radius: 18px;
+.second {
     border: 3px solid silver;
-  }
+}
 
-  .third {
-    border-radius: 18px;
-    border: 3px solid #cd7f32 ;
-  }
+.third {
+    border: 3px solid #cd7f32;
+}
 
-  .card-content{
-      padding:20px;
-      text-align: center;
-      
-  }
-  
-  .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
-  }
-  
-  .container div:nth-child(1) .card-footer {
-    background-color: gold;
-  }
-  
-  .container div:nth-child(2) .card-footer {
-    background-color: silver;
-  }
-  
-  .container div:nth-child(3) .card-footer {
-    background-color: #cd7f32;
-  }
-
-  
-  .card-footer {
-      display: flex;
-      gap: 1em;
-      flex-direction: column;
-      width: 100%;
-      margin: 0;
-      padding: 30px 10px;
-      border-radius: 15px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-  }
-
-  footer{
-    position: absolute;
-    width: 100vw;
-
-  }
-
-
-  .credit-text{
-    color: white;
-    background-color: var(--Purple);
-    text-align: center;
+.card-content {
     padding: 20px;
-  }
-  
-  @media screen and (max-width: 776px) {
-      .container{
-        margin-top: 5em;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          gap: 5em;
-      }
-
-      .card{
-        width: 21.5em;
-      }
-  
-  }
-
-/* style.css */
-
-.fade-in {
-    animation: fadeIn ease-in-out 1s;
+    text-align: center;
 }
 
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+.card-footer {
+    width: 100%;
+    margin: 0;
+    padding: 30px 10px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
 }
 
-
-.numero {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 240px;
-  height: 60px;
-  background-color: white;
-  border: 3px solid var(--Purple);
-  color: var(--Purple);
-  font-size: 36px;
-  font-weight: 700;
-  border-radius: 0.5em;
-  overflow: hidden;
-  position: relative;
-  text-align: center;
+.container div:nth-child(1) .card-footer {
+    background-color: gold;
 }
 
-.numero-animato {
-  animation: slotSpin 1s ease-in-out;
-  position: absolute;
-  width: 100%;
-  text-align: center;
+.container div:nth-child(2) .card-footer {
+    background-color: silver;
 }
 
-@keyframes slotSpin {
-  0% {
-      transform: translateY(100%);
-      opacity: 0;
-  }
-  50% {
-      transform: translateY(-10%);
-      opacity: 1;
-  }
-  100% {
-      transform: translateY(0%);
-  }
+.container div:nth-child(3) .card-footer {
+    background-color: #cd7f32;
 }
 
-
-.premio-block {
-  transition: opacity 0.5s ease-in-out;
-}
-
-.fade-out {
-  opacity: 0;
-}
-
-.fade-in {
-  opacity: 1;
-}
-
-/* Stile per il contenitore dei confetti */
+/* ===========================
+   PARTICLES / CONFETTI
+=========================== */
 #tsparticles {
-  position: fixed; /* Copre l'intero schermo */
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1; /* Posizionato sotto il contenuto principale */
-  pointer-events: none; /* Non interferisce con i clic */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
 }
 
+/* ===========================
+   RESPONSIVE – MOBILE
+=========================== */
+@media screen and (max-width: 776px) {
+    .logo-index {
+        width: 78%;
+        min-width: unset;
+    }
 
+    .ticket-counter {
+        font-size: 0.78rem;
+    }
 
+    .cta {
+        font-size: 1rem;
+        padding: 16px 32px;
+    }
 
+    .content {
+        margin: 5em 1em;
+    }
+
+    .logo-2 {
+        width: 28%;
+        margin-top: 1.5em;
+    }
+
+    .riepilogo-text {
+        font-size: 2em;
+    }
+
+    .container {
+        margin-top: 5em;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5em;
+    }
+
+    .card {
+        width: 21.5em;
+    }
+}
+
+/* ===========================
+STAMPA / PRINT
+=========================== */
+@media print {
+
+    /* Sfondo bianco, niente gradient */
+    body {
+        background: white !important;
+        padding-bottom: 0;
+    }
+
+    /* Nasconde elementi non necessari */
+    header,
+    #printBtn,
+    .logo-2 {
+        display: none !important;
+    }
+
+    /* Titolo riepilogo */
+    .riepilogo-text {
+        color: #1a1a1a !important;
+        font-size: 2.5em;
+        margin-top: 0.5em;
+    }
+
+    /* Contenitore card */
+    .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 1.2em;
+        margin: 2em 1em;
+        page-break-inside: avoid;
+    }
+
+    /* Card */
+    .card {
+        width: 200px;
+        height: auto;
+        min-height: 180px;
+        box-shadow: none !important;
+        border-width: 4px;
+        page-break-inside: avoid;
+    }
+
+    /* Medaglia */
+    .medal {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+        width: 3em;
+        margin: 0.5em auto 0;
+        display: block;
+    }
+
+    .card-content h1 {
+        font-size: 2rem;
+    }
+
+    .card p {
+        font-size: 1rem;
+    }
+
+    /* Footer card */
+    .card-footer {
+        padding: 16px 8px;
+        height: 200px;
+    }
+
+    /* Forza stampa colori di sfondo (per i card-footer colorati) */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+}

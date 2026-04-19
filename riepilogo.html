@@ -4,64 +4,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
-    <title>Riepilogo</title>
+    <link rel="icon" type="image/png" href="./img/favicon_CI26.png">
+    <title>Riepilogo Premi – CI 2026</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
 
-
     <header>
-        <a href="index.html" id="reset"><img src="./img/logo_carnevale2025.svg" class="logo-2" alt=""></a>
+        <a href="index.html"><img src="./img/logo_carnevale2026.svg" class="logo-2" alt="Logo"></a>
     </header>
 
-    <h1 class="riepilogo-text" style="text-align: center; color: white; margin-top: 40px; font-weight: 700;">RIEPILOGO PREMI</h1>
+    <h1 class="riepilogo-text" style="text-align: center; color: white; margin-top: 40px; font-weight: 800;">
+        Riepilogo Premi
+    </h1>
 
+    <!--
+        Struttura Cards:
+        - 1° card (gold)   → 1° Premio → getWinner(3)  → id="numero3"
+        - 2° card (silver) → 2° Premio → getWinner(2)  → id="numero2"
+        - 3° card (bronze) → 3° Premio → getWinner(1)  → id="numero1"
+    -->
     <div class="container">
 
         <div class="card first">
-            <img src="./img/first_medal.svg" class="medal" alt="first_medal">
+            <img src="./img/first_medal.svg" class="medal" alt="Medaglia 1° Premio">
             <div class="card-content">
-                <h1 id="numero3" data-premio="3"></h1>
+                <h1 id="numero3"></h1>
             </div>
             <div class="card-footer">
                 <p>1° Premio</p>
                 <span class="card-description" style="text-align: center;">Smartbox</span>
             </div>
         </div>
-  
+
         <div class="card second">
-            <img src="./img/second_medal.svg" class="medal" alt="first_medal">
+            <img src="./img/second_medal.svg" class="medal" alt="Medaglia 2° Premio">
             <div class="card-content">
-                <h1 id="numero2" data-premio="2"></h1>
-            </div> 
+                <h1 id="numero2"></h1>
+            </div>
             <div class="card-footer">
                 <p>2° Premio</p>
-                <span class="card-description" style="text-align: center;">Cesto di prodotti di aziende dei 3 Comuni</span>
+                <span class="card-description" style="text-align: center;">Cesto di prodotti di aziende dei 4 Comuni</span>
             </div>
         </div>
+
         <div class="card third">
-            <img src="./img/third_medal.svg" class="medal" alt="first_medal">
+            <img src="./img/third_medal.svg" class="medal" alt="Medaglia 3° Premio">
             <div class="card-content">
-                
-                <h1 id="numero1" data-premio="1"></h1>
-            </div> 
+                <h1 id="numero1"></h1>
+            </div>
             <div class="card-footer">
                 <p>3° Premio</p>
-                <span class="card-description" style="text-align: center;">Buono sconto presso un ristorante dei 3 Comuni</span>
+                <span class="card-description" style="text-align: center;">Buono sconto presso un ristorante dei 4 Comuni</span>
             </div>
         </div>
+
+    </div>
+
+    <!-- Pulsante stampa -->
+    <div style="text-align: center; margin-bottom: 6rem;">
+        <button id="printBtn" onclick="window.print()" style="
+            padding: 12px 36px;
+            background: #de197e;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            box-shadow: 0 4px 16px rgba(222,25,126,0.4);
+        ">🖨️ Stampa / Salva PDF</button>
     </div>
 
     <footer>
-        <p class="credit-text">Carnevale Intercomunale 2025</p>
+        <p class="credit-text">Carnevale Intercomunale 2026</p>
     </footer>
 
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.min.js"></script>
-
 
 </body>
 </html>

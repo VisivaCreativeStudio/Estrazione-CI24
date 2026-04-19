@@ -4,49 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
-    <title>Estrazione 1° Premio</title>
+    <link rel="icon" type="image/png" href="./img/favicon_CI26.png">
+    <title>Estrazione 3° Premio – CI 2026</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
 
-    
     <div class="estrazione-page">
         <header>
-            <a href="index.html" id="reset"><img src="./img/logo_carnevale2025.svg" class="logo-2" alt=""></a>
+            <a href="index.html"><img src="./img/logo_carnevale2026.svg" class="logo-2" alt="Logo"></a>
         </header>
 
         <div class="content third">
             <div class="premio-block">
-                <img src="./img/third_medal.svg" class="medal" alt="first_medal">
-                <h2 class="premio" id="premioTitle">3° Premio</h2>
-                <p>Buono sconto presso un ristorante dei 3 Comuni</p>
-                <div class="numero-container" id="numeroContainer1" onclick="estraiNumero(event)">
+                <img src="./img/third_medal.svg" class="medal" alt="Medaglia 3° Premio">
+                <h2 class="premio">3° Premio</h2>
+                <p>Buono sconto presso un ristorante dei 4 Comuni</p>
+
+                <!-- Display numero estratto -->
+                <div class="numero-container">
                     <div class="numero" id="numero1"></div>
                 </div>
 
-                <div class="buttons-container">
-                    <div class="estrai-btn">
-                        <!-- Modifica del pulsante di estrazione su tutte le pagine di estrazione -->
-                        <button id="estraiButton" onclick="estraiNumero(event)" data-premio="1">Estrai <ion-icon name="chevron-forward-outline"></ion-icon></button>
-                    </div>
-                    <!-- Estrazione1.html -->
-                    <a href="estrazione2.html" id="prossima-estrazione1" class="secondary-button" data-premio="1">Prossima estrazione</a>
+                <!-- Info pool disponibile -->
+                <p id="poolInfo" style="font-size: 0.78rem; color: #999; margin-top: 0.6em;"></p>
+
+                <!-- Bottoni -->
+                <div class="buttons-container" style="margin-top: 1.2em; gap: 10px; flex-wrap: wrap;">
+
+                    <!-- Estrai -->
+                    <button id="estraiButton" data-premio="1">
+                        Estrai
+                        <ion-icon name="chevron-forward-outline"></ion-icon>
+                    </button>
+
+                    <!-- Conferma vincitore (nascosto) -->
+                    <button id="confermaButton" style="display:none;">
+                        ✓ Conferma vincitore
+                    </button>
+
+                    <!-- Ri-estrai se non venduto (nascosto) -->
+                    <button id="riestraiButton" style="display:none;">
+                        ↺ Numero non venduto – ri-estrai
+                    </button>
+
+                    <!-- Link prossima estrazione (nascosto finché non si conferma) -->
+                    <a id="prossimaLink" href="estrazione2.html" class="secondary-button" style="display:none;">
+                        Prossima estrazione →
+                    </a>
+
                 </div>
             </div>
         </div>
-        
     </div>
 
     <footer>
-        <p class="credit-text">Carnevale Intercomunale 2025</p>
+        <p class="credit-text">Carnevale Intercomunale 2026</p>
     </footer>
 
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>    
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 </body>
 </html>
