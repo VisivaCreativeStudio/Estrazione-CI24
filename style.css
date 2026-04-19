@@ -69,12 +69,20 @@ body {
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.35);
     border-radius: 100px;
-    padding: 0.5rem 1.4rem;
+    padding: 0.55rem 1.2rem;
     color: white;
     font-size: 0.85rem;
     font-weight: 600;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.03em;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    /* Evita che Safari interpreti il testo come numero di telefono */
+    -webkit-touch-callout: none;
+    user-select: none;
+    max-width: 90vw;
+    text-align: center;
+    line-height: 1.5;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .ticket-counter .dot {
@@ -84,6 +92,12 @@ body {
     border-radius: 50%;
     box-shadow: 0 0 8px var(--yellow);
     flex-shrink: 0;
+}
+
+/* Previene che Safari iOS rilevi i numeri come telefono */
+.no-phone {
+    pointer-events: none;
+    unicode-bidi: isolate;
 }
 
 /* === CTA Button === */
